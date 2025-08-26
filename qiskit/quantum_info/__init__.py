@@ -83,6 +83,8 @@ Utility Functions
    :toctree: ../stubs/
 
    Quaternion
+   QuantumBlockchain
+   QuantumBlock
 
 .. autofunction:: partial_trace
 .. autofunction:: schmidt_decomposition
@@ -170,3 +172,4 @@ from .states import (
     negativity,
 )
 from .quaternion import Quaternion
+from .quantum_blockchain import QuantumBlockchain, QuantumBlock
