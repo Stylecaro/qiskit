@@ -104,6 +104,7 @@ pub enum TokenType {
     Measure,
     Opaque,
     Qreg,
+    QuantumNFT,
     Reset,
     Sin,
     Sqrt,
@@ -148,6 +149,7 @@ impl TokenType {
             | TokenType::Measure
             | TokenType::Opaque
             | TokenType::Qreg
+            | TokenType::QuantumNFT
             | TokenType::Reset
             | TokenType::Sin
             | TokenType::Sqrt
@@ -192,6 +194,7 @@ impl TokenType {
             TokenType::Measure => "measure",
             TokenType::Opaque => "opaque",
             TokenType::Qreg => "qreg",
+            TokenType::QuantumNFT => "qnft",
             TokenType::Reset => "reset",
             TokenType::Sin => "sin",
             TokenType::Sqrt => "sqrt",
@@ -607,6 +610,7 @@ impl TokenStream {
                 b"measure" => Ok(TokenType::Measure),
                 b"opaque" => Ok(TokenType::Opaque),
                 b"qreg" => Ok(TokenType::Qreg),
+                b"qnft" => Ok(TokenType::QuantumNFT),
                 b"reset" => Ok(TokenType::Reset),
                 b"sin" => Ok(TokenType::Sin),
                 b"sqrt" => Ok(TokenType::Sqrt),

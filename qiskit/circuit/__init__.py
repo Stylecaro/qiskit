@@ -1396,6 +1396,7 @@ from .instruction import Instruction
 from .instructionset import InstructionSet
 from .operation import Operation
 from .barrier import Barrier
+from .quantum_nft import QuantumNFT
 from .delay import Delay
 from .measure import Measure
 from .reset import Reset
