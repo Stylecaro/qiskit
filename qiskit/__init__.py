@@ -165,4 +165,5 @@ __all__ = [
     "QuantumRegister",
     "transpile",
     "generate_preset_pass_manager",
+    "__version__",
 ]
