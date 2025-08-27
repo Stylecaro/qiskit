@@ -7387,8 +7387,8 @@ class QuantumCircuit:
 
         qubits = [self.qubits[q] if isinstance(q, int) else q for q in qubits]
 
-        starts = {q: 0 for q in qubits}
-        dones = {q: False for q in qubits}
+        starts = dict.fromkeys(qubits, 0)
+        dones = dict.fromkeys(qubits, False)
         for instruction in self._data:
             for q in qubits:
                 if q in instruction.qubits:
@@ -7429,8 +7429,8 @@ class QuantumCircuit:
 
         qubits = [self.qubits[q] if isinstance(q, int) else q for q in qubits]
 
-        stops = {q: self._duration for q in qubits}
-        dones = {q: False for q in qubits}
+        stops = dict.fromkeys(qubits, self._duration)
+        dones = dict.fromkeys(qubits, False)
         for instruction in reversed(self._data):
             for q in qubits:
                 if q in instruction.qubits:
