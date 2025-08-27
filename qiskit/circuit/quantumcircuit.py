@@ -4879,6 +4879,34 @@ class QuantumCircuit:
                 CircuitInstruction(Barrier(len(qubits), label=label), qubits, ())
             )
 
+    def quantum_nft(self, *qargs: QubitSpecifier, token_id: str, metadata: dict = None, label=None) -> InstructionSet:
+        """Apply :class:`~.QuantumNFT`. Creates a quantum NFT on the specified qubits.
+
+        Args:
+            qargs (QubitSpecifier): Specification for one or more qubit arguments.
+            token_id (str): Unique identifier for this quantum NFT.
+            metadata (dict): Optional metadata dictionary for the NFT.
+            label (str): The string label of the quantum NFT.
+
+        Returns:
+            qiskit.circuit.InstructionSet: handle to the added instructions.
+        """
+        from .quantum_nft import QuantumNFT
+
+        if qargs:
+            # This uses a `dict` not a `set` to guarantee a deterministic order to the arguments.
+            qubits = tuple(
+                {q: None for qarg in qargs for q in self._qbit_argument_conversion(qarg)}
+            )
+            return self.append(
+                CircuitInstruction(QuantumNFT(len(qubits), token_id, metadata, label=label), qubits, ()), copy=False
+            )
+        else:
+            qubits = self.qubits.copy()
+            return self._current_scope().append(
+                CircuitInstruction(QuantumNFT(len(qubits), token_id, metadata, label=label), qubits, ())
+            )
+
     def delay(
         self,
         duration: Union[ParameterValueType, expr.Expr],
